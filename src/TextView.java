@@ -6,7 +6,7 @@ public final class TextView {
         System.out.println(rowDivider);
         for (int row = 0; row < model.board.length; row++) {
             System.out.print(row+1);
-            System.out.print("  ");
+            System.out.print("");
             System.out.print("| ");
             for (int col = 0; col <model.board[0].length; col++) {
                 System.out.print(model.board[row][col]);
@@ -17,6 +17,13 @@ public final class TextView {
             System.out.println(rowDivider);
 
         }
+    }
+    public void bottom(){
+        for (int i = 0; i < 3; i++) {
+            System.out.print("   "+(i+1));
+
+        }
+        System.out.println();
     }
     public void switchPlayers(Model model){
         if(model.player=='X'){
@@ -34,9 +41,20 @@ public final class TextView {
             
         }
     }
+    public char again(){
+        System.out.println("Again press Y");
+        return InputUtil.readCharFromUser();
+    }
     public int makeMoveRow(){
         System.out.println("Please enter a row");
         return InputUtil.readIntFromUser();
+    }
+    public void winner(Model model){
+        if(model.Winner){
+            System.out.println(model.player+" is winner");
+        }else {
+            System.out.println("Tie game");
+        }
     }
     public int makeMoveColumn(){
         System.out.println("Please enter a column");
