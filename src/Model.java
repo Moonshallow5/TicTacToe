@@ -2,7 +2,6 @@ public final class Model {
     char player='X';
 
     public char[][] board;
-    private boolean validPlay;
     public Model() {
         int DEFAULT_NR_ROWS = 3;
         int DEFAULT_NR_COLS = 3;
@@ -16,9 +15,10 @@ public final class Model {
         }return true;
     }
     public void makeMove(int x,int y){
-      validPlay=isMoveValid(x,y);
+      boolean validPlay=isMoveValid(x,y);
+
         if(board[x][y]==' '){
-            board[Math.abs(y-2)][x]=player;
+            board[x][y]=player;
         }
 
 
