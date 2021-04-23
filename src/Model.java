@@ -46,6 +46,7 @@ public final class Model {
 
         }return false;
     }
+
     public boolean isWinnerVertical(char player,char[][] board){
         for (int col = 0; col < board[0].length; col++) {
             int columnCount=0;
