@@ -1,6 +1,7 @@
 public final class Model {
     char player='X';
     boolean Winner=false;
+    boolean concedeNow;
 
     public char[][] board;
     public Model() {
@@ -10,10 +11,11 @@ public final class Model {
         // Initialise the board size to its default values.
 }
     public boolean isMoveValid(int x,int y){
-
-        if( x>=3|| x<0 ||y>=3 ||y<0 ||board[x][y]!=' ' ){
+        if(x!=-2 && y!=-2){
+        if( x>=3|| x<0 ||y>=3 ||y<0 ||board[x][y]!=' ' ) {
             System.out.println("Cant enter same please repeat");
             return false;
+        }
 
         }
         return true;
@@ -23,6 +25,7 @@ public final class Model {
             Winner=isWinnerVertical(player,board)|| isWinnerUpwardDiagonal(player,board) || isWinnerDownwardDiagonal(player,board) || isWinnerHorizontal(player,board);
 
     }
+
     public boolean isWinnerHorizontal(char player,char[][] board){
         /*for (int row = 0; row < board.length; row++) {
             int rowCount=0;
@@ -49,14 +52,10 @@ public final class Model {
         }return false;
     }
     public boolean isWinnerDownwardDiagonal(char player,char[][] board){
-        if(board[0][0]==player && board[1][1]==player && board[2][2]==player){
-            return true;
-        }return false;
+        return board[0][0] == player && board[1][1] == player && board[2][2] == player;
     }
     public boolean isWinnerUpwardDiagonal(char player,char[][] board){
-        if(board[2][0]==player && board[1][1]==player && board[0][2]==player){
-            return true;
-        }return false;
+        return board[2][0] == player && board[1][1] == player && board[0][2] == player;
     }
 
     public boolean isWinnerVertical(char player,char[][] board){
