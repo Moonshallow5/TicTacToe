@@ -22,7 +22,7 @@ public final class Controller {
             first();
         } else if (x == 2) {
             second();
-            //ed3e
+
 
         }else {
             System.out.println(view.correct());
