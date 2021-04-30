@@ -12,19 +12,28 @@ public final class Model {
 }
     public boolean isMoveValid(int x,int y){
         if(x!=-2 && y!=-2){
-        if( x>=3|| x<0 ||y>=3 ||y<0 ||board[x][y]!=' ' ) {
-            System.out.println("Cant enter same please repeat");
-            return false;
-        }
+            return x < 3 && x >= 0 && y < 3 && y >= 0 && board[x][y] == ' ';
 
         }
         return true;
     }
+    public void computer(){
+        int  row=(int)(Math.random()*3);
+        int  column=(int)(Math.random()*3);
+        while (!isMoveValid(row,column)){
+            row=(int)(Math.random()*3);
+            column=(int)(Math.random()*3);
+            isMoveValid(row,column);
+        }makeMove(row,column);
+        System.out.println("Computer moved to row "+(row+1)+" and moved to column "+(column+1));
+    }
     public void makeMove(int x,int y){
+        //concedeNow=concede(x);
         board[x][y]=player;
             Winner=isWinnerVertical(player,board)|| isWinnerUpwardDiagonal(player,board) || isWinnerDownwardDiagonal(player,board) || isWinnerHorizontal(player,board);
 
     }
+
 
     public boolean isWinnerHorizontal(char player,char[][] board){
         /*for (int row = 0; row < board.length; row++) {
