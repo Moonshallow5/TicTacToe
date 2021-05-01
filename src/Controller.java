@@ -71,23 +71,40 @@ public final class Controller {
     public void move(){
 
     int rowMove = view.makeMoveRow(model);
+    if(rowMove==-1){
+        model.Winner=true;
+        model.concedeNow=true;
+    }else {
+        int columnMove = view.makeMoveColumn(model);
+        if (columnMove == -1) {
+            model.Winner = true;
+            model.concedeNow = true;
+        }else {
+            validPlay = model.isMoveValid(rowMove - 1, columnMove - 1);
+            while (!validPlay) {
+                System.out.println(view.check());
+                rowMove = view.makeMoveRow(model);
+                if(rowMove==-1){
+                    model.Winner=true;
+                    model.concedeNow=true;
+                    validPlay=true;
+                }else {
+                    columnMove = view.makeMoveColumn(model);
+                    if(columnMove==-1){
+                        model.Winner=true;
+                        model.concedeNow=true;
+                        validPlay=true;
+                    }
+                    validPlay = model.isMoveValid(rowMove - 1, columnMove - 1);
+                }
+            }
 
-    int columnMove = view.makeMoveColumn(model);
-    validPlay = model.isMoveValid(rowMove - 1, columnMove - 1);
-    while (!validPlay) {
-        System.out.println(view.check());
-        rowMove = view.makeMoveRow(model);
-        columnMove = view.makeMoveColumn(model);
-        validPlay = model.isMoveValid(rowMove - 1, columnMove - 1);
-    }
-    if (columnMove == -1 || rowMove == -1) {
-        model.Winner = true;
-        model.concedeNow = true;
-
-    } else {
-        model.makeMove(rowMove - 1, columnMove - 1);
-        view.bottom();
-        view.displayBoard(model);
+             if (columnMove!=-1 && rowMove!=-1){
+                model.makeMove(rowMove - 1, columnMove - 1);
+                view.bottom();
+                view.displayBoard(model);
+            }
+        }
     }
 
     }public void playAgain(){
