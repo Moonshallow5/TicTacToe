@@ -30,6 +30,7 @@ public final class Controller {
         }
     }
     public void first(){
+        System.out.println("Enter -1 to concede");
         view.initialDisplay(model);
         view.bottom();
         view.displayBoard(model);
@@ -51,6 +52,7 @@ public final class Controller {
         playAgain();
     }
     public void second(){
+        System.out.println("Enter -1 to concede");
         view.initialDisplay(model);
         view.bottom();
         view.displayBoard(model);
