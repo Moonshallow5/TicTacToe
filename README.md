@@ -1,1 +1,1 @@
-# This is a simple Tic Tac Toe game
+A program just like the real Tic Tac Toe game
